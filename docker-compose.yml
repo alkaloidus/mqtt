@@ -1,10 +1,15 @@
-mosquitto:
-    image: eclipse-mosquitto
-    container_name: mosquitto
-    volumes:
-      - ${app_data}/mosquitto:/mosquitto
-      - ${app_data}/mosquitto/data:/mosquitto/data
-      - ${app_data}/mosquitto/log:/mosquitto/log
-    ports:
-      - 1883:1883
-      - 9001:9001
+version: "3.9"
+services:
+  mosquitto:
+      image: eclipse-mosquitto
+      container_name: mosquitto
+      volumes:
+        - ${app_data}/mosquitto:/mosquitto
+        - ${app_data}/mosquitto/data:/mosquitto/data
+        - ${app_data}/mosquitto/log:/mosquitto/log
+      ports:
+        - 1883:1883
+        - 9001:9001
+networks:
+    private:
+        external: true
